@@ -1,0 +1,47 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Locate plugin for Craft CMS 3.x
+ *
+ * Locate Settings.twig
+ *
+ * @author    Isaac Gray
+ * @copyright Copyright (c) 2018 Isaac Gray
+ * @link      https://www.vaersaagod.no/
+ * @package   Locate
+ * @since     2.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("swixpop\\locate\\assetbundles\\locate\\LocateAsset") %}
+
+{{ forms.textField({
+    label: 'Google Maps API Key' | t('locate'),
+    instructions: 'Use your API key, or get one from <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Google</a>' | t('locate'),
+    id: 'googleMapsApiKey',
+    name: 'googleMapsApiKey',
+    value: settings['googleMapsApiKey']})
+}}
+
+<div class="field" id="autocompleteOptions-field">
+    <div class="heading">
+        <label for="autocompleteOptions">{{ 'Google Autocomplete Global Options' | t('locate') }}</label>
+        <p class="instructions">{{ "The Autocomplete field defaults to all place types (cities, addresses, businesses, etc.) in the world. By default, the API will attempt to detect the user's location from their IP address, and will bias the results to that location. You can modify the default behaviour by passing in a JSON object of options. For a full list of allowed options see the official documentation from" | t('locate') }} <a href="https://developers.google.com/maps/documentation/javascript/places-autocomplete#add_autocomplete" target="_blank">Google</a>.</p>
+        <p class="instructions">{{ "You can set these options globally, or on a per field basis. Options set on individual fields will override the global options" | t('locate') }}</p>
+        <p class="instructions"><em><span class="locate-warn">{{ "Warning:" | t('locate') }}</span> {{ "The options object must be formatted correctly or the plugin will not function! Please see the plugin documentation for complete instructions and examples. If after doing so you are unclear about what to enter below, please leave it blank." | t('locate') }}</em> <a href="https://github.com/swixpop/craft-locate/blob/master/README.md" target="_blank">{{ 'Plugin documentation' | t('locate') }}</a>.</p>
+    </div>
+    <div class="input">
+        <textarea class="text nicetext fullwidth" rows="4" cols="50" id="autocompleteOptions" name="autocompleteOptions" style="min-height: 76px;">{{ settings.autocompleteOptions }}</textarea>
+    </div>
+</div>
+<hr>
+<div class="locate-code-samples">
+    <code>
+        <span class="code-comment">// {{ 'Only show establishments and bias the results to the Pacific Northwest, and only in Canada (ie. Doughnut shops in Vancouver)' | t('locate') }}</span>
+        "types": ["establishment"],<br>
+        "bounds": {<span class="code-break -l1">"north": 50,<br>"east": -122,<br>"south": 48,<br>"west": -123</span>},<br>
+        "componentRestrictions": {<span class="code-break -l1">"country": "ca"</span>}
+    </code>
+</div>

@@ -1,17 +1,33 @@
-# Locate plugin for Craft CMS
+# Locate plugin for Craft CMS 3.x
 
 Harness the power of the [Google Autocomplete API](https://developers.google.com/maps/documentation/javascript/places-autocomplete) inside Craft. Adds an autocomplete search box to Craft entries which allows place and address queries to be made to the API. Populates a hidden **Location** field with `lat`, `lng`, `location`, and `placeid` which you can grab in your templates to do with as you wish.
 
+
 ## Requirements
-* [Craft CMS](https://craftcms.com/)
-* [Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+
+* [Craft CMS](https://craftcms.com/) 3.0.0-beta.23 or later.
+* [Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key) with `
+Google Maps JavaScript API` and `Google Places API Web Service` enabled.
 
 ## Installation
 
-1. Download & unzip the file and place the `locate` directory into your `craft/plugins` directory
-2. Install plugin in the Craft Control Panel under Settings > Plugins
-3. Configure the plugin via the plugin settings page in the control panel.
-4. You can now create `Location` fields and add them to your entries.
+To install the plugin, follow these instructions.
+
+1. Open your terminal and go to your Craft project:
+
+        cd /path/to/project
+
+2. Then tell Composer to load the plugin:
+
+        composer require swixpop/locate
+
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Locate, or from the command line:
+
+        ./craft install/plugin imager
+        
+4. Configure the plugin via the plugin settings page in the control panel.
+
+5. You can now create `Location` fields and add them to your entries.
 
 ## Configuration
 
@@ -133,6 +149,7 @@ You could then generate a simple map by loading up the Google Maps javascript AP
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 ```
 and grabbing the `placeid`, `lat`, and `lng` in your javascript:
+
 ```javascript
 var map,
     myLat = $('.yummy').attr('data-lat'),
@@ -160,14 +177,5 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 ```
 
-## Locate Roadmap
 
-* Bug test and move out of beta
-
-## Locate Changelog
-
-### 0.4.9 -- 2016.02.18
-
-* Initial release
-
-Brought to you by [Isaac Gray](http://isaacgray.me)
+Brought to you by [Isaac Gray](https://www.vaersaagod.no/)

@@ -1,0 +1,21 @@
+/**
+ * Locate plugin for Craft CMS
+ *
+ * LocateField Field CSS
+ *
+ * @author    Isaac Gray
+ * @copyright Copyright (c) 2018 Isaac Gray
+ * @link      https://www.vaersaagod.no/
+ * @package   Locate
+ * @since     2.0.0
+ */
+
+.api-not-set-warn {
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+}
+.api-not-set {
+    color: red;
+    font-weight: bold;
+}

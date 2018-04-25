@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2018 Isaac Gray
  * @link      https://www.vaersaagod.no/
  * @package   Locate
- * @since     2.0.0LocateLocateField
+ * @since     2.0.0
  */
 
 ;(function ($, window, document, undefined) {

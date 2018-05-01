@@ -23,8 +23,8 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Locate, or from the command line:
 
-        ./craft install/plugin imager
-        
+        ./craft install/plugin locate
+
 4. Configure the plugin via the plugin settings page in the control panel.
 
 5. You can now create `Location` fields and add them to your entries.

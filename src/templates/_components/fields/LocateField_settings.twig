@@ -16,13 +16,13 @@
 {% import "_includes/forms" as forms %}
 
 {% do view.registerAssetBundle("swixpop\\locate\\assetbundles\\locate\\LocateAsset") %}
-
-{{ forms.textareaField({
-    label: 'Google autocomplete options' | t('locate'),
-    instructions: 'Modify the default behaviour of the Autocomplete field by passing in a JSON object of options. Setting the options here will override any global options set in the plugin settings. For more detail on how to correctly format the options, please see the' | t('locate') ~ ' <a href="' ~ pluginSettingsUrl ~ '" target="_blank">' ~ ('plugin settings' | t('locate')) ~'</a>',
-    id: 'optionsObject',
-    name: 'optionsObject',
-    rows: 4,
-    value: field['optionsObject']})
-}}
-
+<div class="swixpop-locate">
+    {{ forms.textareaField({
+        label: 'Google autocomplete options' | t('locate'),
+        instructions: 'Modify the default behaviour of the Autocomplete field by passing in a JSON object of options. Setting the options here will override any global options set in the plugin settings. For more detail on how to correctly format the options, please see the' | t('locate') ~ ' <a href="' ~ pluginSettingsUrl ~ '" target="_blank">' ~ ('plugin settings' | t('locate')) ~'</a>',
+        id: 'optionsObject',
+        name: 'optionsObject',
+        rows: 4,
+        value: field['optionsObject']})
+    }}
+</div>

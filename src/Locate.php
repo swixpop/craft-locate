@@ -44,7 +44,7 @@ class Locate extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '2.0.1';
+    public $schemaVersion = '2.0.2';
 
     /**
      * @var bool

@@ -10,17 +10,17 @@
  * @since     2.0.0
  */
 
-.locate-warn {
+.swixpop-locate .locate-warn {
     text-transform: uppercase;
     font-weight: bold;
     color: red;
 }
 
-.instructions {
+.swixpop-locate .instructions {
     max-width: 700px;
 }
 
-code {
+.swixpop-locate code {
     max-width: 800px;
     padding: 20px;
     display: block;
@@ -28,15 +28,15 @@ code {
     border-radius: 3px;
 }
 
-.code-comment {
+.swixpop-locate .code-comment {
     display: block;
     color: #999;
     margin-bottom: 10px;
 }
-.code-break {
+.swixpop-locate .code-break {
     display: block;
 }
 
-.-l1 {
+.swixpop-locate .-l1 {
     margin-left: 20px;
 }

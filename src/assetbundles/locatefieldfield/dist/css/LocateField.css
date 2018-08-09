@@ -10,12 +10,12 @@
  * @since     2.0.0
  */
 
-.api-not-set-warn {
+.swixpop-locate .api-not-set-warn {
     color: #666;
     font-size: 12px;
     font-style: italic;
 }
-.api-not-set {
+.swixpop-locate .api-not-set {
     color: red;
     font-weight: bold;
 }

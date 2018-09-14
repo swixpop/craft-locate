@@ -38,17 +38,19 @@
                     lat: document.getElementById(_this.options.prefix + _this.options.name + '-lat'),
                     lng: document.getElementById(_this.options.prefix + _this.options.name + '-lng'),
                     placeid: document.getElementById(_this.options.prefix + _this.options.name + '-placeid'),
+                    locationData: document.getElementById(_this.options.prefix + _this.options.name + '-locationData'),
                 }
                 var input = document.getElementById(_this.options.prefix + _this.options.name + '-location');
                 var options = JSON.parse('{' + _this.options.optionsObject + '}');
                 var autocomplete = new google.maps.places.Autocomplete(input, options);
                 autocomplete.addListener('place_changed', function () {
                     var place = autocomplete.getPlace();
-                    console.log(place);
                     fields.lat.value = place.geometry.location.lat();
                     fields.lng.value = place.geometry.location.lng()
                     fields.placeid.value = place.place_id;
+                    fields.locationData.value = JSON.stringify(place);
                 });
+
 
                 input.addEventListener('change', function(e) {
                    if (!input.value) {

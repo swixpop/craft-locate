@@ -46,6 +46,11 @@ class LocateModel extends Model
      */
     public $placeid = '';
 
+    /**
+     * @var string
+     */
+    public $locationData = '';
+
     // Public Methods
     // =========================================================================
 
@@ -55,8 +60,8 @@ class LocateModel extends Model
     public function rules()
     {
         return [
-            [['lat', 'lng', 'location', 'placeid'], 'string'],
-            [['lat', 'lng', 'location', 'placeid'], 'default', 'value' => ''],
+            [['lat', 'lng', 'location', 'placeid', 'locationData'], 'string'],
+            [['lat', 'lng', 'location', 'placeid', 'locationData'], 'default', 'value' => ''],
         ];
     }
 }

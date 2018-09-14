@@ -33,6 +33,19 @@
         name: name ~ '[location]',
         value: value.location ?? null }) }}
 
+    {% set locationData = value.locationData ?? null %}
+
+    {% if locationData %}
+        {% set locationData = locationData | json_encode %}
+    {% endif %}
+
+    {{ forms.hidden({
+        id: name ~ '-locationData',
+        disabled: apiKeyNotSet,
+        name: name ~ '[locationData]',
+        value: locationData }) }}
+
+
     {{ forms.hidden({
         id: name ~ '-lat',
         name: name ~ '[lat]',

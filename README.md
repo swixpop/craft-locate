@@ -9,6 +9,9 @@ Harness the power of the [Google Autocomplete API](https://developers.google.com
 * [Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key) with `
 Google Maps JavaScript API` and `Google Places API Web Service` enabled.
 
+#### Note:
+Google has updated their API access policy. See https://cloud.google.com/maps-platform/user-guide/
+
 ## Installation
 
 To install the plugin, follow these instructions.
@@ -119,8 +122,9 @@ Using the above examples we can create an options object that restricts searches
 
 ## Using the Location field
 
-The Location field returns `lat`, `lng`, `location`, and `placeid`. You can use these in your templates and pass them on to your javascript.
+The Location field returns `locationData`, `lat`, `lng`, `location`, and `placeid`. You can use these in your templates and pass them on to your javascript.
 
+* `locationData` returns the full API response from Google, with an additional `components` array which maps the `address_components` to an an array with the component types as keys. See [here](https://developers.google.com/maps/documentation/geocoding/intro#Types) for a list of some types. (For example, you can access `locationData.components.country` in your twig. You can also add `_short` to any component key to access the `short_name` of that address component, for example `locationData.components.country_short`).
 * `lat` returns the latitude of the place
 * `lng` returns the longitude of the place
 * `location` returns autocomplete query

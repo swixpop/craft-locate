@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1 - 2018-09-14
+### Fixed
+- Clearing a location field now *actually* removes all field data from the database :)
+
+### Added
+- The field now returns `locationData`. This is the full API response from Google.
+- Returns `locationData.components` which is a keyed array of all the Google `address_components` data.
+
 ## 2.0.2 - 2018-08-09
 ### Fixed
 - Scoped all CSS to plugin

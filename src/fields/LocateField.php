@@ -98,13 +98,17 @@ class LocateField extends Field
         if (is_string($value)) {
             $attr += array_filter(json_decode($value, true) ?: [],
                 function ($key) {
-                    return in_array($key, ['lat', 'lng', 'location', 'placeid']);
+                    return in_array($key, ['lat', 'lng', 'location', 'placeid', 'locationData']);
                 }, ARRAY_FILTER_USE_KEY);
         } else if (is_array($value) && isset($value['isCpFormData'])) {
+            if ($value['location'] === '') {
+                return new LocateModel();
+            }
             $attr += [
                 'lat' => $value['lat'] ?? null,
                 'lng' => $value['lng'] ?? null,
                 'location' => $value['location'],
+                'locationData' => $this->formatLocationData(json_decode($value['locationData'], true)),
                 'placeid' => $value['placeid'],
             ];
         } else if (is_array($value)) {
@@ -112,6 +116,29 @@ class LocateField extends Field
         }
 
         return new LocateModel($attr);
+    }
+
+
+
+    private function formatLocationData($data)
+    {
+        $returnData = $data;
+        $components = [];
+        $addressComponents = $data['address_components'];
+
+        foreach ($addressComponents as $component) {
+            $type = $component['types'][0];
+
+            if (!$type) continue;
+
+            $components[$type] = $component['long_name'];
+            $components[$type . "_short"] = $component['short_name'];
+        }
+
+        $returnData['components'] = $components;
+
+        return $returnData;
+
     }
 
     /**
@@ -161,6 +188,7 @@ class LocateField extends Field
         $id = Craft::$app->getView()->formatInputId($this->handle);
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);
         $apiKey = Locate::getInstance()->getSettings()->googleMapsApiKey;
+
 
         if ($apiKey) {
             Craft::$app->getView()->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $apiKey . '&libraries=places');

@@ -24,6 +24,7 @@ use craft\helpers\Db;
 use yii\db\Schema;
 use craft\helpers\Json;
 use craft\helpers\UrlHelper;
+use craft\helpers\StringHelper;
 
 /**
  * LocateField Field
@@ -104,11 +105,15 @@ class LocateField extends Field
             if ($value['location'] === '') {
                 return new LocateModel();
             }
+            $locationData = $value['locationData'];
+            if (Craft::$app->getDb()->getIsMysql()) {
+              $locationData = StringHelper::encodeMb4($locationData);
+            }
             $attr += [
                 'lat' => $value['lat'] ?? null,
                 'lng' => $value['lng'] ?? null,
                 'location' => $value['location'],
-                'locationData' => $this->formatLocationData(json_decode($value['locationData'], true)),
+                'locationData' => $this->formatLocationData(json_decode($locationData, true)),
                 'placeid' => $value['placeid'],
             ];
         } else if (is_array($value)) {

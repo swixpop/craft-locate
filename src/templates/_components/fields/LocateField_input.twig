@@ -16,7 +16,7 @@
 {% import "_includes/forms" as forms %}
 
 {% set apiKeyNotSet = apiKey | length ? false : true %}
-<div class="swixpop-locate">
+<div class="swixpop-locate swixpop-locate--field">
     {% if apiKeyNotSet %}
         {% if currentUser.admin %}
             <span class="api-not-set-warn"><span class="api-not-set">{{ 'Important:' | t('locate') }}</span> {{ 'Before using the Location field you must set your Google Maps API key in the' | t('locate') }} <a href="{{ pluginSettingsUrl }}">{{ 'plugin settings' | t('locate') }}</a></span>

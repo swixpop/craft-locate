@@ -19,3 +19,8 @@
     color: red;
     font-weight: bold;
 }
+
+
+.swixpop-locate--field .field {
+    margin-bottom: 0;
+}

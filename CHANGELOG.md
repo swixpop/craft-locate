@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.1 - 2019-02-27
+### Fixed
+- Bug where place data with emojis would prevent saving of field
+- Bug where hitting enter to select a place would instead trigger a save on the entry before place was selected
+
 ## 2.1.0 - 2018-09-14
 ### Fixed
 - Clearing a location field now *actually* removes all field data from the database :)

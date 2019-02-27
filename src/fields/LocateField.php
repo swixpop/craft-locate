@@ -17,6 +17,8 @@ use swixpop\locate\Locate;
 use swixpop\locate\assetbundles\locatefieldfield\LocateFieldFieldAsset;
 use swixpop\locate\models\LocateModel;
 
+use craft\helpers\StringHelper;
+
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
@@ -101,7 +103,8 @@ class LocateField extends Field
                     return in_array($key, ['lat', 'lng', 'location', 'placeid', 'locationData']);
                 }, ARRAY_FILTER_USE_KEY);
         } else if (is_array($value) && isset($value['isCpFormData'])) {
-            if ($value['location'] === '') {
+
+            if (!array_key_exists('location', $value) || $value['location']  === '') {
                 return new LocateModel();
             }
             $attr += [
@@ -122,9 +125,10 @@ class LocateField extends Field
 
     private function formatLocationData($data)
     {
+//        Craft::dd($data);
         $returnData = $data;
         $components = [];
-        $addressComponents = $data['address_components'];
+        $addressComponents = $data['address_components'] ?? [];
 
         foreach ($addressComponents as $component) {
             $type = $component['types'][0];
@@ -150,7 +154,8 @@ class LocateField extends Field
      */
     public function serializeValue($value, ElementInterface $element = null)
     {
-        return parent::serializeValue($value, $element);
+//        Craft::dd(StringHelper::encodeMb4(StringHelper::encodeMb4(json_encode($value))));
+        return parent::serializeValue(StringHelper::encodeMb4(StringHelper::encodeMb4(json_encode($value))), $element);
     }
 
     /**

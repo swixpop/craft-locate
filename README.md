@@ -124,7 +124,7 @@ Using the above examples we can create an options object that restricts searches
 
 The Location field returns `locationData`, `lat`, `lng`, `location`, and `placeid`. You can use these in your templates and pass them on to your javascript.
 
-* `locationData` returns the full API response from Google, with an additional `components` array which maps the `address_components` to an an array with the component types as keys. See [here](https://developers.google.com/maps/documentation/geocoding/intro#Types) for a list of some types. (For example, you can access `locationData.components.country` in your twig. You can also add `_short` to any component key to access the `short_name` of that address component, for example `locationData.components.country_short`).
+* `locationData` returns the full API response from Google, with an additional `components` array which maps the `address_components` to an array with the component types as keys. See [here](https://developers.google.com/maps/documentation/geocoding/intro#Types) for a list of some types. (For example, you can access `locationData.components.country` in your twig. You can also add `_short` to any component key to access the `short_name` of that address component, for example `locationData.components.country_short`).
 * `lat` returns the latitude of the place
 * `lng` returns the longitude of the place
 * `location` returns autocomplete query

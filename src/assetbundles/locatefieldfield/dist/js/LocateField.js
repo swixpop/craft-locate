@@ -84,6 +84,9 @@
     // A really lightweight plugin wrapper around the constructor,
     // preventing against multiple instantiations
     $.fn[pluginName] = function (options) {
+        // Temporary fix for Locate to get the right prefix
+        options.prefix = options.namespace.replace(options.name, '');
+
         return this.each(function () {
             if (!$.data(this, "plugin_" + pluginName)) {
                 $.data(this, "plugin_" + pluginName,

@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 Isaac Gray
  */
 
-namespace swixpop\locate\assetbundles\Locate;
+namespace swixpop\locate\assetbundles\locate;
 
 use Craft;
 use craft\web\AssetBundle;
